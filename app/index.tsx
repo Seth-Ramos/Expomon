@@ -62,11 +62,12 @@ export default function index() {
           style={styles.search}
           autoCapitalize="none"
         />
-        <Button title="Search" onPress={fetchPokemon}/>
+        <Button title="Search" onPress={fetchPokemon} />
         </View>
         {loading && <ActivityIndicator />}
       {error && <Text>{error}</Text>}
       {pokemon && (
+        <View style={styles.Border}>
         <View style={styles.resultContainer}>
           <Text style={styles.text}>
             {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
@@ -80,7 +81,7 @@ export default function index() {
             Type: {pokemon.types.map((t: any) => t.type.name).join(', ')}
           </Text>
         </View>
-
+        </View>
 
       )}</SafeAreaView>
   );
@@ -90,13 +91,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#e83030",
+    borderWidth: 10,
   },
   search: {
     flex: 1,
     borderRadius: 5,
-    width: '80%',
     marginRight: 10,
-    borderColor: 'gray',
+    borderColor: 'black',
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
@@ -109,7 +110,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     paddingTop: 10,
-    backgroundColor: '#e83030',
   },
   pokemonImage: {
     borderWidth: 10,
@@ -119,13 +119,20 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     backgroundColor: 'white',
   },
+  Border: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   resultContainer: {
     borderWidth: 10,
     borderRadius: 10,
-    marginHorizontal: 40,
     backgroundColor: "#fc9ca4",
     alignItems: "center",
     marginTop: 20,
+    justifyContent: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    
   },
   text:{
     color: 'black',
